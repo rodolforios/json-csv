@@ -29,7 +29,7 @@ exporter.prototype.csv = function(options) {
   var self = this;
 
   return es.through(function write(data) {
-    if (!writtenHeader)
+    if (!writtenHeader && !self.options.skipHeader)
     {
       this.emit('data', self.getHeaderRow())
       writtenHeader = true
