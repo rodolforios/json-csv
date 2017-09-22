@@ -50,22 +50,24 @@ exporter.prototype.getHeaderRow = function() {
   var self = this
   var header = _.reduce(self.options.fields, function(line, field) {
     var label = field.label || field.field
-    if (line === 'START') {
+    if (line === '') {
       line = '';
     } else {
       line += self.fieldSeparator
     }
     line += self.prepValue(label)
     return line
-  }, 'START')
-  header += '\r\n'
+  }, '')
+  if (header) {
+    header += '\r\n'
+  }
   return header
 }
 
 exporter.prototype.getBodyRow = function(data) {
   var self = this
   var row = _.reduce(this.options.fields, function(line, field) {
-    if (line === 'START') {
+    if (line === '') {
       line = '';
     } else {
       line += self.fieldSeparator
@@ -79,9 +81,11 @@ exporter.prototype.getBodyRow = function(data) {
       line += self.prepValue(val.toString(), quoted)
     }
     return line
-  }, 'START', self)
+  }, '', self)
 
-  row += '\r\n'
+  if (row) {
+    row += '\r\n'
+  }
   return row
 }
 
