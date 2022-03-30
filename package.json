@@ -11,7 +11,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:IWSLLC/json-csv.git"
+    "url": "https@github.com:IWSLLC/json-csv.git"
   },
   "main": "./index.js",
   "engines": {
